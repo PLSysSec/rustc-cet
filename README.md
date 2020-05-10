@@ -1,5 +1,7 @@
 # The Rust Programming Language
 
+This is a modified version of rusts tooling that supports Intel CET. Pass the flags --cf_protection_branch and --cf_protection_return to enable IBT and shadowstack respectively.
+
 This is the main source code repository for [Rust]. It contains the compiler,
 standard library, and documentation.
 
