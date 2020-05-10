@@ -559,6 +559,8 @@ impl Default for Options {
             test: false,
             incremental: None,
             debugging_opts: basic_debugging_options(),
+            cf_protection_branch: false,
+            cf_protection_return: false,
             prints: Vec::new(),
             borrowck_mode: BorrowckMode::Migrate,
             cg: basic_codegen_options(),
@@ -937,6 +939,8 @@ pub fn rustc_short_optgroups() -> Vec<RustcOptGroup> {
             "OPT",
         ),
         opt::flag_s("", "test", "Build a test harness"),
+        opt::flag_s("", "cf_protection_branch", "Intel CET Indirect branch tracking protection"),
+        opt::flag_s("", "cf_protection_return", "Intel CET shadow stack protection"),
         opt::opt_s("", "target", "Target triple for which the code is compiled", "TARGET"),
         opt::multi_s("W", "warn", "Set lint warnings", "OPT"),
         opt::multi_s("A", "allow", "Set lint allowed", "OPT"),
@@ -1708,6 +1712,8 @@ pub fn build_session_options(matches: &getopts::Matches) -> Options {
     let libs = parse_libs(matches, error_format);
 
     let test = matches.opt_present("test");
+    let cf_protection_branch = matches.opt_present("cf_protection_branch");
+    let cf_protection_return = matches.opt_present("cf_protection_return");
 
     let borrowck_mode = parse_borrowck_mode(&debugging_opts, error_format);
 
@@ -1737,6 +1743,8 @@ pub fn build_session_options(matches: &getopts::Matches) -> Options {
         test,
         incremental,
         debugging_opts,
+        cf_protection_branch,
+        cf_protection_return,
         prints,
         borrowck_mode,
         cg,

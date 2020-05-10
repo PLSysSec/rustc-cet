@@ -1619,6 +1619,7 @@ extern "C" {
     pub fn LLVMRustVersionMinor() -> u32;
 
     pub fn LLVMRustAddModuleFlag(M: &Module, name: *const c_char, value: u32);
+    pub fn LLVMRustAddModuleFlagOverride(M: &Module, name: *const c_char, value: u32);
 
     pub fn LLVMRustMetadataAsValue(C: &'a Context, MD: &'a Metadata) -> &'a Value;
 

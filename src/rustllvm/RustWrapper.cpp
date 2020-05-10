@@ -670,6 +670,11 @@ extern "C" void LLVMRustAddModuleFlag(LLVMModuleRef M, const char *Name,
   unwrap(M)->addModuleFlag(Module::Warning, Name, Value);
 }
 
+extern "C" void LLVMRustAddModuleFlagOverride(LLVMModuleRef M, const char *Name,
+                                      uint32_t Value) {
+  unwrap(M)->addModuleFlag(Module::Override, Name, Value);
+}
+
 extern "C" LLVMValueRef LLVMRustMetadataAsValue(LLVMContextRef C, LLVMMetadataRef MD) {
   return wrap(MetadataAsValue::get(*unwrap(C), unwrap(MD)));
 }

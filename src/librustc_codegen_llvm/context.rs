@@ -196,6 +196,16 @@ pub unsafe fn create_module(
         llvm::LLVMRustAddModuleFlag(llmod, avoid_plt, 1);
     }
 
+    if sess.cf_protection_branch() {
+        let cf_branch = "cf-protection-branch\0".as_ptr().cast();
+        llvm::LLVMRustAddModuleFlagOverride(llmod, cf_branch, 1);
+    }
+
+    if sess.cf_protection_return() {
+        let cf_return = "cf-protection-return\0".as_ptr().cast();
+        llvm::LLVMRustAddModuleFlagOverride(llmod, cf_return, 1);
+    }
+
     // Set module flags to enable Windows Control Flow Guard (/guard:cf) metadata
     // only (`cfguard=1`) or metadata and checks (`cfguard=2`).
     match sess.opts.debugging_opts.control_flow_guard {

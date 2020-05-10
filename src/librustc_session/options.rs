@@ -107,6 +107,11 @@ top_level_options!(
         incremental: Option<PathBuf> [UNTRACKED],
 
         debugging_opts: DebuggingOptions [TRACKED],
+
+        // CET related flags
+        cf_protection_branch: bool [TRACKED],
+        cf_protection_return: bool [TRACKED],
+
         prints: Vec<PrintRequest> [UNTRACKED],
         // Determines which borrow checker(s) to run. This is the parsed, sanitized
         // version of `debugging_opts.borrowck`, which is just a plain string.
