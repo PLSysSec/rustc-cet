@@ -1,6 +1,16 @@
 # The Rust Programming Language
 
-This is a modified version of rusts tooling that supports Intel CET. Pass the flags --cf_protection_branch and --cf_protection_return to enable IBT and shadowstack respectively.
+This is a modified version of rusts tooling that supports Intel CET. 
+To compile with this toolchain, run the following commands
+
+```bash
+# cd to the current folder
+./x.py build
+./x.py install
+# will output the build ../out/rust_build
+rustup toolchain link rust-cet ../out/rust_build
+RUSTFLAGS="--cf_protection_branch --cf_protection_return" CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="./rust_cet_linker" cargo +rust-cet build
+```
 
 This is the main source code repository for [Rust]. It contains the compiler,
 standard library, and documentation.
