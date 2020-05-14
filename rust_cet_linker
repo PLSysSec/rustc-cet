@@ -1,0 +1,2 @@
+!/bin/bash
+eval cc -z ibt -z shstk '"$@"'
