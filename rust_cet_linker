@@ -1,2 +1,2 @@
 !/bin/bash
-eval cc -z ibt -z shstk '"$@"'
+eval cc -export-dynamic -z ibt -z shstk '"$@"'
