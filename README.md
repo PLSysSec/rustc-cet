@@ -1,15 +1,26 @@
 # The Rust Programming Language
 
-This is a modified version of rusts tooling that supports Intel CET. 
-To compile with this toolchain, run the following commands
+This is a modified version of rusts tooling that supports Intel CET.
+This adds the CET support by default.
+To setup this toolchain, run the following commands
 
 ```bash
 # cd to the current folder
 ./x.py build
-./x.py install
 # will output the build ../out/rust_build
+./x.py install
+# register the toolchain
 rustup toolchain link rust-cet ../out/rust_build
-RUSTFLAGS="--cf_protection_branch --cf_protection_return" CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="./rust_cet_linker" cargo +rust-cet build
+```
+
+To build with CET
+```bash
+CFLAGS="-fcf-protection=full" CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="./rust_cet_linker" cargo +rust-cet build
+```
+
+To build without CET
+```bash
+RUSTFLAGS="--cf_protection_disable_branch --cf_protection_disable_return" cargo +rust-cet build
 ```
 
 This is the main source code repository for [Rust]. It contains the compiler,

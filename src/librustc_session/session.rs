@@ -942,11 +942,11 @@ impl Session {
         dbg_opts.plt.unwrap_or(needs_plt || !full_relro)
     }
 
-    pub fn cf_protection_branch(&self) -> bool {
-        self.opts.cf_protection_branch
+    pub fn cf_protection_disable_branch(&self) -> bool {
+        self.opts.cf_protection_disable_branch
     }
-    pub fn cf_protection_return(&self) -> bool {
-        self.opts.cf_protection_return
+    pub fn cf_protection_disable_return(&self) -> bool {
+        self.opts.cf_protection_disable_return
     }
 }
 

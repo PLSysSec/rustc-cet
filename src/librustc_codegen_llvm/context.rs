@@ -196,12 +196,12 @@ pub unsafe fn create_module(
         llvm::LLVMRustAddModuleFlag(llmod, avoid_plt, 1);
     }
 
-    if sess.cf_protection_branch() {
+    if !sess.cf_protection_disable_branch() {
         let cf_branch = "cf-protection-branch\0".as_ptr().cast();
         llvm::LLVMRustAddModuleFlagOverride(llmod, cf_branch, 1);
     }
 
-    if sess.cf_protection_return() {
+    if !sess.cf_protection_disable_return() {
         let cf_return = "cf-protection-return\0".as_ptr().cast();
         llvm::LLVMRustAddModuleFlagOverride(llmod, cf_return, 1);
     }

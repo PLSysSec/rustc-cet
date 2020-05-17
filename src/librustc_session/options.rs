@@ -109,8 +109,8 @@ top_level_options!(
         debugging_opts: DebuggingOptions [TRACKED],
 
         // CET related flags
-        cf_protection_branch: bool [TRACKED],
-        cf_protection_return: bool [TRACKED],
+        cf_protection_disable_branch: bool [TRACKED],
+        cf_protection_disable_return: bool [TRACKED],
 
         prints: Vec<PrintRequest> [UNTRACKED],
         // Determines which borrow checker(s) to run. This is the parsed, sanitized
