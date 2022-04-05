@@ -36,7 +36,7 @@
 	url = https://github.com/rust-lang/edition-guide.git
 [submodule "src/llvm-project"]
 	path = src/llvm-project
-	url = git@github.com:PLSysSec/llvm-project-cet.git
+	url = https://github.com/PLSysSec/llvm-project-cet.git
 	branch = master
 [submodule "src/doc/embedded-book"]
 	path = src/doc/embedded-book
